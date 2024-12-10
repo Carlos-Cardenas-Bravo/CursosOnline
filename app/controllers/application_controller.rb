@@ -5,14 +5,14 @@ class ApplicationController < ActionController::Base
   # Aplica la autenticación en toda la aplicación, excepto en los controladores de Devise y en la acción `index` de WelcomeController
   before_action :authenticate_user!, unless: :devise_or_welcome_index?
 
-  def run_seed
-    if Rails.env.production?
-      load Rails.root.join('db/seeds.rb')
-      render plain: "Seed executed successfully"
-    else
-      render plain: "Not in production environment"
-    end
-  end
+# def run_seed
+#   if Rails.env.production?
+#     load Rails.root.join('db/seeds.rb')
+#     render plain: "Seed executed successfully"
+#   else
+#     render plain: "Not in production environment"
+#   end
+# end
 
   def after_sign_in_path_for(resource)
     dashboard_path   # Solo para test después modifica según lógica de la aplicación

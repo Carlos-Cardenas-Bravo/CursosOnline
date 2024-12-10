@@ -58,7 +58,7 @@ end
 
 gem "figaro", "~> 1.2"
 gem "devise", "~> 4.9"
-gem "image_processing", "~> 1.12", ">= 1.12.2"
+gem "image_processing", "~> 1.13"
 gem "faker", "~> 3.5"
 gem "sassc-rails"
 gem "annotate", "3.2.0"

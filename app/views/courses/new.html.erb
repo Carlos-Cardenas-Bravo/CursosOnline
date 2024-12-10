@@ -1,0 +1,18 @@
+<% content_for :title, "Nuevo Curso" %>
+
+<section class="section">
+  <div class="container">
+    <!-- Título de la página -->
+    <h1 class="title is-3">Nuevo Curso</h1>
+
+    <!-- Formulario -->
+    <div class="box">
+      <%= render "form", course: @course %>
+    </div>
+
+    <!-- Botón para regresar -->
+    <div class="buttons mt-5">
+      <%= link_to "Volver a Cursos", courses_path, class: "button is-light" %>
+    </div>
+  </div>
+</section>

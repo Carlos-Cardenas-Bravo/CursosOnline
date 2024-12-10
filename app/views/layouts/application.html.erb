@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="theme-dark">
+  <head>
+    <title><%= content_for(:title) || "Cursos Online" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="has-navbar-fixed-top">
+
+    <!-- Navbar visible en todas las páginas -->
+    <%= render 'shared/navbar_bulma' %>
+
+    <!-- Contenedor con clase 'container' solo en páginas que no sean 'welcome#index' -->
+    <% unless controller.controller_name == 'welcome' && controller.action_name == 'index' %>
+      <div class="container" style="max-width: 70%; margin: auto;">
+    <% end %>
+
+      <!-- Mensajes flash -->
+      <% if flash[:notice] %>
+        <div class="notification is-success" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="notification is-danger" role="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <!-- Contenido principal -->
+      <%= yield %>
+
+    <% unless controller.controller_name == 'welcome' && controller.action_name == 'index' %>
+      </div> <!-- Cierre del div container para otras páginas -->
+    <% end %>
+
+    <!-- Footer visible en todas las páginas -->
+    <%= render 'shared/footer' %>
+
+  </body>
+</html>
+

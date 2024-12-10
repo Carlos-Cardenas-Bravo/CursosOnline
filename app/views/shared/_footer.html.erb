@@ -1,0 +1,54 @@
+<footer class="footer" style="padding: 1rem 0;">
+    <div class="container" style="max-width: 70%; margin: auto;">
+      <div class="columns is-vcentered">
+        <!-- Logo y dirección -->
+        <div class="column is-3">
+          <%= link_to root_path do %>
+            <%= image_tag "Logo2ctrn.png", alt: "Inicio", width: "30", height: "30" %>
+          <% end %>
+          <p class="has-text-white-ter">Tocornal 601, Santiago<br>Chile</p>
+        </div>
+
+        <!-- Íconos de redes sociales -->
+        <div class="column is-3 has-text-centered">
+          <div class="buttons">
+            <a class="button is-dark" href="#"><i class="fab fa-facebook-f has-text-white"></i></a>
+            <a class="button is-dark" href="#"><i class="fab fa-linkedin-in has-text-white"></i></a>
+            <a class="button is-dark" href="#"><i class="fab fa-twitter has-text-white"></i></a>
+            <a class="button is-dark" href="#"><i class="fab fa-instagram has-text-white"></i></a>
+          </div>
+        </div>
+
+        <!-- Etiquetas o enlaces de navegación -->
+        <div class="column is-3 has-text-centered">
+          <nav class="level is-mobile">
+            <% ["Label", "Label", "Label", "Label", "Label"].each do |label| %>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading has-text-white-ter"><%= label %></p>
+                </div>
+              </div>
+            <% end %>
+          </nav>
+        </div>
+
+        <!-- Texto de derechos -->
+        <div class="column is-3 has-text-right">
+            <p class="has-text-white-ter">Designed by 2C © 2024</p>
+        </div>
+      </div>
+
+      <!-- Enlaces legales -->
+      <div class="columns is-centered">
+        <div class="column is-narrow has-text-centered">
+          <p class="has-text-white-ter">
+            <a href="#" class="has-text-white-ter">Privacy</a> |
+            <a href="#" class="has-text-white-ter">Terms</a> |
+            <a href="#" class="has-text-white-ter">Legal</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+

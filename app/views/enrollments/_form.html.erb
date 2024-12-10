@@ -1,0 +1,40 @@
+<%= form_with(model: enrollment, local: true, class: "box") do |form| %>
+  <% if enrollment.errors.any? %>
+    <div class="notification is-danger">
+      <h2 class="title is-5"><%= pluralize(enrollment.errors.count, "error") %> impidieron que se guardara esta inscripción:</h2>
+      <ul>
+        <% enrollment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :student_id, class: "label" %>
+    <div class="control">
+      <%= form.select :student_id, User.where(role: :estudiante).map { |u| ["#{u.nombre} #{u.apellido}", u.id] }, { prompt: "Selecciona un estudiante" }, class: "select" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_id, class: "label" %>
+    <div class="control">
+      <%= form.select :course_id, Course.all.map { |c| [c.title, c.id] }, { prompt: "Selecciona un curso" }, class: "select" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :progress, class: "label" %>
+    <div class="control">
+      <%= form.number_field :progress, class: "input", placeholder: "Progreso en %" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= form.submit "Guardar Inscripción", class: "button is-primary" %>
+    </div>
+  </div>
+<% end %>
+

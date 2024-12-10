@@ -1,0 +1,27 @@
+<div id="<%= dom_id course %>" class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong class="is-size-5">Título:</strong>
+          <span class="is-size-6 has-text-weight-semibold"><%= course.title %></span>
+        </p>
+        <p>
+          <strong class="is-size-5">Descripción:</strong>
+          <span class="is-size-6"><%= course.description %></span>
+        </p>
+        <p>
+          <strong class="is-size-5">Duración:</strong>
+          <span class="is-size-6"><%= course.duration %> horas</span>
+        </p>
+        <p>
+          <strong class="is-size-5">Instructor:</strong>
+          <span class="is-size-6 has-text-link">
+            <%= User.find(course.instructor_id).nombre %> <%= User.find(course.instructor_id).apellido %>
+          </span>
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
+

@@ -1,0 +1,19 @@
+<% content_for :title, "Editar Inscripción" %>
+
+<section class="section">
+  <div class="container">
+    <!-- Título de la página -->
+    <h1 class="title is-3">Editar Inscripción</h1>
+
+    <!-- Formulario -->
+    <div class="box">
+      <%= render "form", enrollment: @enrollment %>
+    </div>
+
+    <!-- Botones de navegación -->
+    <div class="buttons mt-5">
+      <%= link_to "Ver esta Inscripción", @enrollment, class: "button is-link" %>
+      <%= link_to "Volver a Inscripciones", enrollments_path, class: "button is-light" %>
+    </div>
+  </div>
+</section>

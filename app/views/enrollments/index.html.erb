@@ -1,0 +1,32 @@
+<% content_for :title, "Inscripciones" %>
+
+<section class="section">
+  <div class="container">
+    <!-- Mensaje de notificación -->
+    <% if notice %>
+      <div class="notification is-success">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <!-- Título de la página -->
+    <h1 class="title is-3">Inscripciones</h1>
+
+    <!-- Listado de inscripciones -->
+    <div id="enrollments">
+      <% @enrollments.each do |enrollment| %>
+        <div class="box">
+          <%= render enrollment %>
+          <div class="buttons mt-3">
+            <%= link_to "Ver esta Inscripción", enrollment, class: "button is-link is-small" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Enlace para crear nueva inscripción -->
+    <div class="buttons mt-5">
+      <%= link_to "Nueva Inscripción", new_enrollment_path, class: "button is-primary" %>
+    </div>
+  </div>
+</section>

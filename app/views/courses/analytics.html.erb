@@ -1,0 +1,32 @@
+<section class="section">
+    <div class="container">
+      <h1 class="title is-3">Analítica de Cursos</h1>
+
+      <% if @courses.any? %>
+        <table class="table is-fullwidth is-striped">
+          <thead>
+            <tr>
+              <th>Título del Curso</th>
+              <th>Descripción</th>
+              <th>Estudiantes Inscritos</th>
+              <th>Progreso Promedio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @courses.each do |course| %>
+              <tr>
+                <td><%= link_to course.title, course_path(course) %></td>
+                <td><%= truncate(course.description, length: 50) %></td>
+                <td><%= course.enrollments.count %></td>
+                <td>
+                  <%= course.enrollments.any? ? (course.enrollments.average(:progress).to_f.round(2)) : "N/A" %> %
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="has-text-grey">No tienes cursos creados para analizar.</p>
+      <% end %>
+    </div>
+  </section>

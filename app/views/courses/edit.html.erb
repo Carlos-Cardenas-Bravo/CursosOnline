@@ -1,0 +1,17 @@
+<% content_for :title, "Editar Curso" %>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title is-3">Editar Curso</h1>
+
+    <!-- Renderizar el formulario -->
+    <%= render "form", course: @course %>
+
+    <div class="buttons mt-5">
+      <!-- Enlace para mostrar el curso -->
+      <%= link_to "Ver este Curso", @course, class: "button is-link" %>
+      <!-- Enlace para regresar a la lista de cursos -->
+      <%= link_to "Volver a la lista de Cursos", courses_path, class: "button is-light" %>
+    </div>
+  </div>
+</section>

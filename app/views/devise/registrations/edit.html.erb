@@ -1,0 +1,131 @@
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3">Editar mi perfil</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'box' }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :email, class: "label" %>
+        <div class="control">
+          <%= f.email_field :email, class: "input", autofocus: true, autocomplete: "email" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :nombre, class: "label" %>
+        <div class="control">
+          <%= f.text_field :nombre, class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :apellido, class: "label" %>
+        <div class="control">
+          <%= f.text_field :apellido, class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :edad, class: "label" %>
+        <div class="control">
+          <%= f.number_field :edad, class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :sexo, class: "label" %>
+        <div class="control">
+          <div class="select">
+            <%= f.select :sexo, ['Hombre', 'Mujer'] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :profile_image, "Actualizar imagen de perfil", class: "label" %>
+        <div class="control">
+          <div class="file has-name is-fullwidth">
+            <label class="file-label">
+              <%= f.file_field :profile_image, class: "file-input", onchange: "document.getElementById('file-name').textContent = this.files[0].name" %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Escoge un archivo…
+                </span>
+              </span>
+              <span id="file-name" class="file-name">
+                Ningún archivo seleccionado
+              </span>
+            </label>
+          </div>
+          <figure>
+              <%= image_tag @user.resized_profile_image, alt: "Imagen de Perfil" %>
+          </figure>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :receive_updates, "¿Deseas recibir actualizaciones?", class: "label" %>
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :receive_updates %> Sí, deseo recibir actualizaciones
+          </label>
+        </div>
+      </div>
+
+      <hr>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="notification is-info">
+          Actualmente esperando confirmación para: <%= resource.unconfirmed_email %>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :contraseña, class: "label" %> <i>(deja en blanco si no deseas cambiarla)</i>
+        <div class="control">
+          <%= f.password_field :password, class: "input", autocomplete: "new-password" %>
+        </div>
+        <% if @minimum_password_length %>
+          <p class="help">Mínimo de <%= @minimum_password_length %> caracteres</p>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :confirma_tu_contraseña, class: "label" %>
+        <div class="control">
+          <%= f.password_field :password_confirmation, class: "input", autocomplete: "new-password" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :contraseña_actual, class: "label" %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i>
+        <div class="control">
+          <%= f.password_field :current_password, class: "input", autocomplete: "current-password" %>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <%= f.submit "Actualizar", class: "button is-primary" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="box mt-5">
+      <h3 class="title is-4">Cancelar mi Cuenta</h3>
+      <div class="field is-grouped">
+        <div class="control">
+          <%= button_to "Cancelar mi cuenta", registration_path(resource_name), method: :delete, class: "button is-danger" %>
+        </div>
+        <div class="control">
+          <%= link_to "Volver", :back, class: "button is-link" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

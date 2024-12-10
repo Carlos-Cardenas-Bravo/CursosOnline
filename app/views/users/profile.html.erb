@@ -1,0 +1,31 @@
+<section class="section">
+    <div class="container">
+      <div class="card">
+        <header class="card-header">
+          <p class="title is-4">
+            Perfil de <%= @user.nombre %> <%= @user.apellido %></p>
+          </p>
+        </header>
+        <div class="card-content">
+          <figure>
+              <%= image_tag @user.resized_profile_image, alt: "Imagen de Perfil" %>
+          </figure>
+
+          <div class="content mt-4">
+            <p class="subtitle is-6"><strong>Email:</strong> <%= @user.email %></p>
+            <p><strong>Rol:</strong> <%= @user.role.humanize %></p>
+            <p><strong>Edad:</strong> <%= @user.edad %></p>
+            <p><strong>Sexo:</strong> <%= @user.sexo %></p>
+            <p><strong>Recibe actualizaciones:</strong> <%= @user.receive_updates ? "Sí" : "No" %></p>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="buttons">
+            <%= link_to "Editar perfil", edit_user_registration_path, class: "button is-link" %>
+            <%= button_to "Salir", destroy_user_session_path, method: :delete, data: { confirm: "¿Estás seguro de que deseas salir?" }, class: "button is-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

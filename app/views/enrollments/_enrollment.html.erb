@@ -1,0 +1,24 @@
+<div id="<%= dom_id enrollment %>" class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong class="is-size-5">Estudiante:</strong>
+          <span class="is-size-6">
+            <%= User.find(enrollment.student_id).nombre %> <%= User.find(enrollment.student_id).apellido %>
+          </span>
+        </p>
+        <p>
+          <strong class="is-size-5">Curso:</strong>
+          <span class="is-size-6 has-text-link">
+            <%= Course.find(enrollment.course_id).title %>
+          </span>
+        </p>
+        <p>
+          <strong class="is-size-5">Progreso:</strong>
+          <span class="is-size-6"><%= enrollment.progress %> %</span>
+        </p>
+      </div>
+    </div>
+  </article>
+</div>

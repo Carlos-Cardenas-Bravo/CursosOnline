@@ -1,0 +1,19 @@
+<section class="section">
+    <div class="container">
+      <h1 class="title is-3">Progreso en el Curso: <%= @course.title %></h1>
+
+      <% if @progress %>
+        <div class="box">
+          <p class="subtitle is-5">Tu progreso actual en este curso es:</p>
+          <progress class="progress is-primary" value="<%= @progress %>" max="100"><%= @progress %>%</progress>
+          <p class="has-text-weight-bold"><%= @progress %>% completado</p>
+        </div>
+      <% else %>
+        <div class="notification is-warning">
+          No tienes progreso registrado en este curso.
+        </div>
+      <% end %>
+
+      <%= link_to "Volver a los Cursos", courses_path, class: "button is-link" %>
+    </div>
+  </section>

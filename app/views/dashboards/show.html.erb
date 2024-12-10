@@ -1,0 +1,74 @@
+<section class="section">
+    <div class="container">
+      <h1 class="title is-3">Panel de Usuario</h1>
+
+      <% if current_user.instructor? %>
+        <!-- Panel para instructores -->
+        <div class="box">
+          <h2 class="title is-4">Bienvenido, Instructor <%= current_user.nombre %>!</h2>
+          <p class="subtitle is-5">Tus opciones:</p>
+          <div class="buttons">
+            <%= link_to "Crear Curso", new_course_path, class: "button is-primary" %>
+            <%= link_to "Ver Cursos", courses_path, class: "button is-link" %>
+            <%= link_to "Analítica de Cursos", "/courses/analytics", class: "button is-info" %>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 class="title is-5">Tus cursos:</h3>
+          <% if @courses.any? %>
+            <ul>
+              <% @courses.each do |course| %>
+                <li>
+                  <%= link_to course.title, course_path(course), class: "has-text-primary" %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="has-text-grey">No has creado cursos todavía.</p>
+          <% end %>
+        </div>
+
+      <% elsif current_user.estudiante? %>
+        <!-- Panel para estudiantes -->
+        <div class="box">
+          <h2 class="title is-4">Bienvenido, Estudiante <%= current_user.nombre %>!</h2>
+          <p class="subtitle is-5">Tus opciones:</p>
+          <div class="buttons">
+            <%= link_to "Explorar Cursos", courses_path, class: "button is-link" %>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 class="title is-5">Tus inscripciones:</h3>
+          <% if @enrollments.any? %>
+            <table class="table is-fullwidth is-striped">
+              <thead>
+                <tr>
+                  <th>Curso</th>
+                  <th>Progreso</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @enrollments.each do |enrollment| %>
+                  <tr>
+                    <td><%= link_to enrollment.course.title, course_path(enrollment.course), class: "has-text-link" %></td>
+                    <td><%= enrollment.progress %> %</td>
+                    <td>
+                      <%= link_to "Ver Progreso", progress_course_path(enrollment.course), class: "button is-small is-info" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <div class="notification is-warning">
+              No estás inscrito en ningún curso.
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+

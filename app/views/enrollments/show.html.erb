@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="container">
+    <!-- Notificación -->
+    <% if notice %>
+      <div class="notification is-success">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <!-- Detalles de la inscripción -->
+    <div class="box">
+      <%= render @enrollment %>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="buttons mt-5">
+      <%= link_to "Editar esta Inscripción", edit_enrollment_path(@enrollment), class: "button is-info" %>
+      <%= link_to "Volver a Inscripciones", enrollments_path, class: "button is-light" %>
+      <%= button_to "Eliminar esta Inscripción", @enrollment, method: :delete, data: { confirm: "¿Estás seguro de que deseas eliminar esta inscripción?" }, class: "button is-danger" %>
+    </div>
+  </div>
+</section>

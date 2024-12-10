@@ -1,0 +1,35 @@
+<% content_for :title, "Cursos" %>
+
+<section class="section">
+  <div class="container">
+    <!-- Mensaje de notificación -->
+    <% if notice %>
+      <div class="notification is-success">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <!-- Título de la página -->
+    <h1 class="title is-3">Cursos</h1>
+
+    <!-- Listado de cursos -->
+    <div id="courses" class="columns is-multiline">
+      <% @courses.each do |course| %>
+        <div class="column is-one-third">
+          <div class="box">
+            <%= render course %>
+            <div class="buttons mt-3">
+              <%= link_to "Ver este Curso", course, class: "button is-link is-small" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Enlace para crear un nuevo curso -->
+    <div class="buttons mt-5">
+      <%= link_to "Nuevo Curso", new_course_path, class: "button is-primary" %>
+    </div>
+  </div>
+</section>
+

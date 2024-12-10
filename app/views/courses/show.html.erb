@@ -1,0 +1,23 @@
+<section class="section">
+  <div class="container">
+    <!-- Mensaje de notificación -->
+    <% if notice %>
+      <div class="notification is-success">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <!-- Contenido del curso -->
+    <div class="box">
+      <%= render @course %>
+    </div>
+
+    <!-- Botones de acciones -->
+    <div class="buttons mt-5">
+      <%= link_to "Editar este Curso", edit_course_path(@course), class: "button is-info" %>
+      <%= link_to "Volver a Cursos", courses_path, class: "button is-light" %>
+      <%= button_to "Eliminar este Curso", @course, method: :delete, data: { confirm: "¿Estás seguro de que deseas eliminar este curso?" }, class: "button is-danger" %>
+    </div>
+  </div>
+</section>
+

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/run_seed', to: 'application#run_seed'
   get "/dashboard", to: "dashboards#show", as: :dashboard
   resources :enrollments
   resources :courses do
